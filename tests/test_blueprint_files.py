@@ -22,9 +22,9 @@
 
 import os
 
-from nose.tools import assert_equal
+from nose.tools import assert_equal, assert_tuple_equal
 
-from devtools.blueprint_files import EntityTypes, Header
+from devtools.blueprint_files import BinFileParser, EntityTypes, Header
 
 
 def assert_headers_equal(a, b):
@@ -37,6 +37,14 @@ def assert_headers_equal(a, b):
     assert_equal(a.ymax, b.ymax)
     assert_equal(a.zmax, b.zmax)
     assert_equal(a.elements, b.elements)
+
+
+def test_binfileparser():
+    with open('test.bin', 'wb') as file:
+        file.write(b'\00\01\02')
+    with open('test.bin', 'rb') as file:
+        parser = BinFileParser(file)
+        assert_tuple_equal(parser.get('bbb'), (0, 1, 2))
 
 
 def test_header_repr():
