@@ -14,6 +14,10 @@
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 
     Copyright 2015, Martin Billinger
+
+    The binary file decoders in this file are based on information from the
+    Starmade Wiki page "Blueprint File Formats"
+    <https://starmadepedia.net/wiki/Blueprint_File_Formats> (June 4, 2015).
 """
 
 import os
